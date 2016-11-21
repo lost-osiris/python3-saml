@@ -391,7 +391,7 @@ class OneLogin_Saml2_Response(object):
         for attribute_node in attribute_nodes:
             attr_name = attribute_node.get('Name')
 
-            if attr_name in attributes.keys():
+            if attr_name not in attributes.keys():
                attributes[attr_name] = []
 
             values = []

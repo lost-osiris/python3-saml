@@ -390,8 +390,9 @@ class OneLogin_Saml2_Response(object):
         attribute_nodes = self.__query_assertion('/saml:AttributeStatement/saml:Attribute')
         for attribute_node in attribute_nodes:
             attr_name = attribute_node.get('Name')
-            # if attr_name in attributes.keys():
-            #     raise Exception('Found an Attribute element with duplicated Name')
+
+            if attr_name in attributes.keys():
+               attributes[attr_name] = []
 
             values = []
             for attr in attribute_node.iterchildren('{%s}AttributeValue' % OneLogin_Saml2_Constants.NSMAP['saml']):
